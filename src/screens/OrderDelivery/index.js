@@ -23,6 +23,8 @@ import * as Location from "expo-location";
 import MapViewDirections from "react-native-maps-directions";
 import { useNavigation } from "@react-navigation/native";
 
+import token from "../../../config";
+
 const order = orders[0];
 
 const ORDER_STATUSES = {
@@ -169,7 +171,7 @@ const OrderDelivery = () => {
               : []
           }
           strokeColor="#3fc060"
-          apikey={"AIzaSyCBYBnvoLhLMJelssQZMHQOmSM_BwpXras"}
+          apikey={token}
           onReady={result => {
             {
               setIsDriverClose(result.distance <= 0.1);
