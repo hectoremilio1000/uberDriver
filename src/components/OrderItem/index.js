@@ -3,9 +3,17 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { Entypo } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
+import { User } from "../../models";
+import { DataStore } from "aws-amplify";
 
 const OrderItem = ({ order }) => {
   const navigation = useNavigation();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    DataStore.query(User, order.userID).then(setUser);
+  }, []);
   return (
     <Pressable
       style={{
@@ -16,11 +24,11 @@ const OrderItem = ({ order }) => {
         margin: 10,
       }}
       onPress={() =>
-        navigation.navigate("OrderDeliveryScreen", { id: order.id })
+        navigation.navigate("OrdersDeliveryScreen", { id: order.id })
       }
     >
       <Image
-        source={{ uri: order.Restaurant.image }}
+        source={{ uri: order?.Restaurant?.image }}
         style={{
           width: "25%",
           height: "100%",
@@ -30,12 +38,12 @@ const OrderItem = ({ order }) => {
       />
       <View style={{ marginLeft: 10, flex: 1, paddingVertical: 5 }}>
         <Text style={{ fontSize: 16, fontWeight: "500" }}>
-          {order.Restaurant.name}
+          {order?.Restaurant?.name}
         </Text>
-        <Text style={{ color: "grey" }}>{order.Restaurant.address}</Text>
+        <Text style={{ color: "grey" }}>{order?.Restaurant?.address}</Text>
         <Text style={{ marginTop: 10 }}>Delivery details:</Text>
-        <Text style={{ color: "grey" }}>{order.User.name}</Text>
-        <Text style={{ color: "grey" }}>{order.User.address}</Text>
+        <Text style={{ color: "grey" }}>{user?.name}</Text>
+        <Text style={{ color: "grey" }}>{user?.address}</Text>
       </View>
       <View
         style={{

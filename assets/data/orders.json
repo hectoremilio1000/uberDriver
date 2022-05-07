@@ -8,22 +8,22 @@
     "orderRestaurantId": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
     "Restaurant": {
       "id": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-      "name": "La Llorona",
+      "name": "El Cabo Coffe Bar Tres De Mayo",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
       "deliveryFee": 0.039448871531492236,
       "minDeliveryTime": 10,
       "maxDeliveryTime": 44,
       "rating": 1.5095123177204128,
-      "address": "Alvaro Obregón 308",
+      "address": "983 Lewis Rapids",
       "lat": 37.808,
-      "lng": -122.417743,
+      "lng": -122.407743,
       "createdAt": "2022-04-16T12:03:33.225Z",
       "updatedAt": "2022-04-16T12:05:12.826Z"
     },
     "User": {
       "id": "1",
-      "name": "Héctor",
-      "address": "Abc 1",
+      "name": "JeanCarlos",
+      "address": "St mainstreet 3",
       "lat": 37.771389,
       "lng": -122.468611
     }
@@ -37,24 +37,24 @@
     "orderRestaurantId": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
     "Restaurant": {
       "id": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-      "name": "La Llorona",
+      "name": "The masonic",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
       "deliveryFee": 0.039448871531492236,
       "minDeliveryTime": 10,
       "maxDeliveryTime": 44,
       "rating": 1.5095123177204128,
-      "address": "Alvaro Obregón 308",
-      "lat": 19.4263,
-      "lng": -99.17956,
+      "address": "983 Lewis Rapids",
+      "lat": 37.808,
+      "lng": -122.427743,
       "createdAt": "2022-04-16T12:03:33.225Z",
       "updatedAt": "2022-04-16T12:05:12.826Z"
     },
     "User": {
       "id": "1",
-      "name": "Héctor",
-      "address": "Abc 1",
-      "lat": 19.416,
-      "lng": -99.166
+      "name": "jean carlos",
+      "address": "The masonic",
+      "lat": 37.808,
+      "lng": -122.417743
     }
   },
   {
@@ -66,24 +66,24 @@
     "orderRestaurantId": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
     "Restaurant": {
       "id": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-      "name": "Pizza del perro negro",
+      "name": "Jacobs - DuBuque",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
       "deliveryFee": 0.039448871531492236,
       "minDeliveryTime": 10,
       "maxDeliveryTime": 44,
       "rating": 1.5095123177204128,
-      "address": "Alvaro Obregón 298",
-      "lat": 19.41673,
-      "lng": -99.16966,
+      "address": "983 Lewis Rapids",
+      "lat": 37.808,
+      "lng": -122.417743,
       "createdAt": "2022-04-16T12:03:33.225Z",
       "updatedAt": "2022-04-16T12:05:12.826Z"
     },
     "User": {
       "id": "2",
       "name": "Lukas",
-      "address": "Lithuania 1",
-      "lat": 19.4168,
-      "lng": -99.1669
+      "address": "983 Lewis Rapids",
+      "lat": 37.808,
+      "lng": -122.417743
     }
   },
   {
@@ -98,15 +98,15 @@
     "_deleted": null,
     "Restaurant": {
       "id": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-      "name": "La Clandestina",
+      "name": "Happy land",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
       "deliveryFee": 0.039448871531492236,
       "minDeliveryTime": 10,
       "maxDeliveryTime": 44,
       "rating": 1.5095123177204128,
-      "address": "Parque España 3",
-      "lat": 19.41632,
-      "lng": -99.16925,
+      "address": "sacramento st 3",
+      "lat": 37.808,
+      "lng": -122.417743,
       "createdAt": "2022-04-16T12:03:33.225Z",
       "updatedAt": "2022-04-16T12:05:12.826Z"
     },
@@ -114,8 +114,8 @@
       "id": "3",
       "name": "Alex",
       "address": "Happy land",
-      "lat": 19.4169,
-      "lng": -99.1691
+      "lat": 37.808,
+      "lng": -122.417713
     }
   }
 ]
