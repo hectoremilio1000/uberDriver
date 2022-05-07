@@ -13,6 +13,8 @@ import { DataStore } from "aws-amplify";
 import { Courier } from "../../models";
 import { useAuthContext } from "../../contexts/AuthContext";
 
+import token from "../../../config";
+
 const OrderDelivery = () => {
   const { order, user, fetchOrder } = useOrderContext();
   const { dbCourier } = useAuthContext();
@@ -120,7 +122,7 @@ const OrderDelivery = () => {
             order.status === "READY_FOR_PICKUP" ? [restaurantLocation] : []
           }
           strokeColor="#3FC060"
-          apikey={"AIzaSyA40_jSaAHHq6J3o3HKJujVrMHv9gcSV3E"}
+          apikey={token}
           onReady={result => {
             setTotalMinutes(result.duration);
             setTotalKm(result.distance);
