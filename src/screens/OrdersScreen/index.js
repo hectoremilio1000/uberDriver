@@ -4,10 +4,11 @@ import {
   FlatList,
   useWindowDimensions,
   Button,
+  ActivityIndicator,
 } from "react-native";
 import React, { useRef, useMemo, useState, useEffect } from "react";
 import BottomSheet, { BottomSheetFlatList } from "@gorhom/bottom-sheet";
-
+import * as Location from "expo-location";
 import OrderItem from "../../components/OrderItem";
 import MapView, { Marker } from "react-native-maps";
 import { DataStore } from "aws-amplify";
@@ -20,15 +21,42 @@ import { Auth } from "aws-amplify";
 
 const OrdersScreen = () => {
   const [orders, setOrders] = useState([]);
+  const [driverLocation, setDriverLocation] = useState(null);
   const bottomSheetRef = useRef(null);
   const { width, height } = useWindowDimensions();
 
   const snapPoints = useMemo(() => ["12%", "95%"], []);
 
-  useEffect(() => {
+  const fetchOrders = () => {
     DataStore.query(Order, order =>
       order.status("eq", "READY_FOR_PICKUP")
     ).then(setOrders);
+  };
+
+  useEffect(() => {
+    fetchOrders();
+    const subscription = DataStore.observe(Order).subscribe(msg => {
+      if (msg.opType === "UPDATE") {
+        fetchOrders();
+      }
+      return () => subscription.unsubscribe();
+    });
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (!status === "granted") {
+        console.log("Nonono");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync();
+      setDriverLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
+    })();
   }, []);
 
   const Salir = async () => {
@@ -39,6 +67,9 @@ const OrdersScreen = () => {
     }
   };
 
+  if (!driverLocation) {
+    return <ActivityIndicator size={"large"} color="gray" />;
+  }
   return (
     <View
       style={{
@@ -52,10 +83,10 @@ const OrdersScreen = () => {
           width: width,
         }}
         initialRegion={{
-          latitude: 37.808,
-          longitude: -122.417743,
-          latitudeDelta: 0.04,
-          longitudeDelta: 0.05,
+          latitude: driverLocation.latitude,
+          longitude: driverLocation.longitude,
+          latitudeDelta: 0.07,
+          longitudeDelta: 0.07,
         }}
         showsUserLocation
         followsUserLocation

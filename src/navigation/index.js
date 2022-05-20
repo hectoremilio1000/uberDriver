@@ -9,6 +9,9 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   const { dbCourier } = useAuthContext();
+  if (dbCourier === null) {
+    return <ActivityIndicator size="large" color="gray" />;
+  }
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>

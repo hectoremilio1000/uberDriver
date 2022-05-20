@@ -14,13 +14,32 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   const checarDatos = async () => {
+    if (!sub) {
+      return;
+    }
     const DatosUsuario = await DataStore.query(Courier, courier =>
       courier.sub("eq", sub)
-    ).then(couriers => setDbCourier(couriers[0]));
+    ).then(couriers => {
+      setDbCourier(couriers[0]);
+    });
   };
   useEffect(() => {
     checarDatos();
   }, [sub]);
+
+  useEffect(() => {
+    if (!dbCourier) {
+      return;
+    }
+    const subscription = DataStore.observe(Courier, dbCourier.id).subscribe(
+      msg => {
+        if (msg.opType === "UPDATE") {
+          setDbCourier(msg.element);
+        }
+      }
+    );
+    return () => subscription.unsubscribe();
+  }, [dbCourier]);
 
   return (
     <AuthContext.Provider value={{ authUser, dbCourier, sub, setDbCourier }}>

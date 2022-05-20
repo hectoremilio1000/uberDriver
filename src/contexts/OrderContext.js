@@ -27,6 +27,20 @@ const OrderContextProvider = ({ children }) => {
     );
   };
 
+  useEffect(() => {
+    if (!order) {
+      return;
+    }
+    const subscription = DataStore.observe(Order, order.id).subscribe(
+      ({ opType, element }) => {
+        if (opType === "UPDATE") {
+          fetchOrder(element.id);
+        }
+      }
+    );
+    return () => subscription.unsubscribe();
+  }, [order?.id]);
+
   const acceptOrder = async () => {
     // update the order, and change status, and assign the courier
     const updatedOrder = await DataStore.save(
@@ -57,8 +71,6 @@ const OrderContextProvider = ({ children }) => {
     );
     setOrder(updatedOrder);
   };
-
-  console.log(order);
 
   return (
     <OrderContext.Provider
